@@ -1,0 +1,41 @@
+@startuml
+left to right direction 
+
+:Backup Admin: as Admin
+:Local User: as User
+agent "Backup service" as server
+
+rectangle "Local PC" {
+usecase LU_backup as "Backups data 
+on the backup server"
+}
+
+rectangle "Backup PC" {
+  usecase BA_sched_sync as "schedules\n the data sync"
+  usecase BA_sched_IP as "schedules\n IP publishing"
+  usecase BA_restore as "restores data 
+  after local damage"
+  usecase BA_setup as "setups directories\n to be synced"
+  usecase BA_add as "adds a new machine\n to be synced"
+  usecase BA_remove as "removes a machine\n from sync"
+  usecase BA_monitor as "monitors the health\n of the service"
+}
+
+User --> (LU_backup)
+(LU_backup) --> server
+
+Admin --> (BA_sched_sync)
+Admin --> (BA_sched_IP)
+Admin --> (BA_restore)
+Admin --> (BA_setup)
+Admin --> (BA_add)
+Admin --> (BA_remove)
+Admin --> (BA_monitor)
+(BA_sched_sync) --> server
+(BA_sched_IP) --> server
+(BA_restore) --> server
+(BA_setup) --> server
+(BA_add) --> server
+(BA_remove) --> server
+(BA_monitor) --> server
+@enduml
