@@ -1,6 +1,6 @@
-# data_sync
+# datasync
 
-# WILD INTERNET ADDRESS 
+## WILD INTERNET ADDRESS 
 
 curl -s <REMOTE_HOST>/backup/frontdoor.txt 
 
