@@ -1,0 +1,17 @@
+Source: datasync
+Section: misc
+Priority: optional
+Maintainer: rhaport <rhaport@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Homepage: https://github.com/rhaport/datasync
+Vcs-Browser: https://github.com/rhaport/datasync
+Vcs-Git: git@github.com:rhaport/datasync.git
+Rules-Requires-Root: no
+
+Package: datasync
+Architecture: all
+Depends: ${misc:Depends}, 
+##############################################################################
+  rsync
+Description: solution for data backup and synchronization

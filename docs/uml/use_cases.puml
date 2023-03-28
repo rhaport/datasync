@@ -1,24 +1,26 @@
 @startuml
-left to right direction 
+left to right direction
 
 :Backup Admin: as Admin
 :Local User: as User
 agent "Backup service" as server
 
 rectangle "Local PC" {
-usecase LU_backup as "Backups data 
+usecase LU_backup as "Backups data
 on the backup server"
 }
 
 rectangle "Backup PC" {
   usecase BA_sched_sync as "schedules\n the data sync"
   usecase BA_sched_IP as "schedules\n IP publishing"
-  usecase BA_restore as "restores data 
+  usecase BA_restore as "restores data
   after local damage"
-  usecase BA_setup as "setups directories\n to be synced"
+  usecase BA_setup_dirs as "setups directories\n to be synced"
   usecase BA_add as "adds a new machine\n to be synced"
   usecase BA_remove as "removes a machine\n from sync"
   usecase BA_monitor as "monitors the health\n of the service"
+  usecase BA_install as "install backup service"
+  usecase BA_uninstall as "uninstall backup service"
 }
 
 User --> (LU_backup)
@@ -27,14 +29,16 @@ User --> (LU_backup)
 Admin --> (BA_sched_sync)
 Admin --> (BA_sched_IP)
 Admin --> (BA_restore)
-Admin --> (BA_setup)
+Admin --> (BA_setup_dirs)
 Admin --> (BA_add)
 Admin --> (BA_remove)
 Admin --> (BA_monitor)
+Admin --> (BA_install)
+Admin --> (BA_uninstall)
 (BA_sched_sync) --> server
 (BA_sched_IP) --> server
 (BA_restore) --> server
-(BA_setup) --> server
+(BA_setup_dirs) --> server
 (BA_add) --> server
 (BA_remove) --> server
 (BA_monitor) --> server
